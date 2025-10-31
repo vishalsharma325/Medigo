@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicines - Medigo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>🏥 Medigo</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="medicines.html" class="active">Medicines</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="index.html#about">About</a></li>
+            </ul>
+            <button class="cart-icon-btn" id="cartIconBtn">
+                🛒 <span class="cart-count" id="cartCount">0</span>
+            </button>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </nav>
+
+    <!-- Medicine Section -->
+    <section class="medicine-page">
+        <div class="container">
+            <h2>Order Medicines</h2>
+            <p class="section-subtitle">Medicines available within 5km radius - Fast & Safe Delivery</p>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="medicineSearch" placeholder="Search for medicines..." class="search-input" autocomplete="off">
+                <button id="searchBtn" class="btn btn-search">Search</button>
+                <ul id="suggestionsList" class="suggestions hidden"></ul>
+            </div>
+
+            <!-- Medicine Info Panel (from CSV) -->
+            <div id="medicineInfo" class="medicine-info hidden"></div>
+
+            <!-- Location Status -->
+            <div id="locationStatus" class="location-status"></div>
+
+            <!-- Radius Control -->
+            <div class="radius-control">
+                <label for="radiusSlider">Scan radius: <strong><span id="radiusValue">5</span> km</strong></label>
+                <input type="range" id="radiusSlider" min="5" max="50" step="1" value="5" />
+                <div class="radius-meta">
+                    <span>Delivery estimate: <strong id="deliveryEstimate">₹40</strong></span>
+                    <span>Pharmacies scanned: <strong id="pharmacyCount">15</strong></span>
+                </div>
+            </div>
+
+            <!-- Filter Options -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="Pain Relief">Pain Relief</button>
+                <button class="filter-btn" data-category="Antibiotic">Antibiotic</button>
+                <button class="filter-btn" data-category="Allergy">Allergy</button>
+                <button class="filter-btn" data-category="Digestive">Digestive</button>
+                <button class="filter-btn" data-category="Supplement">Supplement</button>
+                <button class="filter-btn" data-category="Diabetes">Diabetes</button>
+            </div>
+
+            <!-- Medicine Grid -->
+            <div id="medicineGrid" class="medicine-grid">
+                <!-- Medicine cards will be loaded here -->
+            </div>
+
+            <!-- Search Results -->
+            <div id="searchResults" class="search-results hidden">
+                <h3>Search Results</h3>
+                <div id="searchResultsGrid" class="medicine-grid">
+                    <!-- Search results will appear here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be displayed here -->
+        </div>
+        <div class="cart-empty hidden" id="cartEmpty">
+            <p>Your cart is empty</p>
+            <p class="cart-empty-subtitle">Add medicines to get started</p>
+        </div>
+        <div class="cart-footer" id="cartFooter">
+            <div class="cart-total">
+                <span>Subtotal:</span>
+                <span id="cartSubtotal">₹0</span>
+            </div>
+            <button class="btn btn-primary" id="proceedToCheckout">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal hidden" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Checkout</h3>
+                <button class="close-modal" id="closeCheckout">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Order Summary -->
+                <div class="checkout-section">
+                    <h4>Order Summary</h4>
+                    <div id="checkoutItems" class="checkout-items">
+                        <!-- Items will be listed here -->
+                    </div>
+                </div>
+
+                <!-- Delivery Address -->
+                <div class="checkout-section">
+                    <h4>Delivery Address</h4>
+                    <form id="checkoutForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" pattern="[0-9]{10}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address *</label>
+                            <textarea id="address" rows="3" required></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="pincode">Pincode *</label>
+                                <input type="text" id="pincode" pattern="[0-9]{6}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Billing Details -->
+                <div class="checkout-section">
+                    <h4>Billing Details</h4>
+                    <div class="billing-details">
+                        <div class="billing-row">
+                            <span>Subtotal:</span>
+                            <span id="billSubtotal">₹0</span>
+                        </div>
+                        <div class="billing-row">
+                            <span>Delivery Charges:</span>
+                            <span id="billDelivery">₹40</span>
+                        </div>
+                        <div class="billing-row">
+                            <span>GST (5%):</span>
+                            <span id="billGST">₹0</span>
+                        </div>
+                        <div class="billing-row total">
+                            <span>Total Amount:</span>
+                            <span id="billTotal">₹0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="checkout-section">
+                    <h4>Payment Method</h4>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="cod" checked>
+                            <span>Cash on Delivery</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="online">
+                            <span>Online Payment</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-block" id="placeOrder">Place Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="modal hidden" id="confirmationModal">
+        <div class="modal-content modal-small">
+            <div class="confirmation-content">
+                <div class="confirmation-icon">✅</div>
+                <h3>Order Placed Successfully!</h3>
+                <p>Your order will be delivered within 30-45 minutes</p>
+                <p class="order-id">Order ID: <strong id="orderId"></strong></p>
+                <button class="btn btn-primary" id="backToMedicines">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Medigo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="medicines.js"></script>
+</body>
+</html>

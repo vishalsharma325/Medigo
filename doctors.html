@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors - Medigo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>🏥 Medigo</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="medicines.html">Medicines</a></li>
+                <li><a href="doctors.html" class="active">Doctors</a></li>
+                <li><a href="index.html#about">About</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </nav>
+
+    <!-- Doctors Section -->
+    <section class="doctors-page">
+        <div class="container">
+            <h2>Consult Expert Doctors</h2>
+            <p class="section-subtitle">Book appointments with experienced specialists</p>
+
+            <!-- Speciality Filter -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-speciality="all">All Doctors</button>
+                <button class="filter-btn" data-speciality="General Physician">General Physician</button>
+                <button class="filter-btn" data-speciality="Cardiologist">Cardiologist</button>
+                <button class="filter-btn" data-speciality="Dermatologist">Dermatologist</button>
+                <button class="filter-btn" data-speciality="Pediatrician">Pediatrician</button>
+                <button class="filter-btn" data-speciality="Orthopedic">Orthopedic</button>
+                <button class="filter-btn" data-speciality="Psychiatrist">Psychiatrist</button>
+            </div>
+
+            <!-- Doctors Grid -->
+            <div id="doctorsGrid" class="doctors-grid">
+                <!-- Doctor cards will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div class="modal hidden" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Book Appointment</h3>
+                <button class="close-modal" id="closeBooking">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Doctor Info -->
+                <div class="booking-doctor-info">
+                    <h4 id="bookingDoctorName"></h4>
+                    <p id="bookingDoctorSpeciality"></p>
+                    <p id="bookingDoctorHospital"></p>
+                </div>
+
+                <!-- Booking Type Selection -->
+                <div class="booking-type-section">
+                    <h4>Select Booking Type</h4>
+                    <div class="booking-type-options">
+                        <label class="booking-type-card">
+                            <input type="radio" name="bookingType" value="regular" checked>
+                            <div class="booking-type-content">
+                                <h5>Regular Appointment</h5>
+                                <p class="booking-time">2:00 PM - 4:00 PM</p>
+                                <p class="booking-price" id="regularPrice">₹500</p>
+                                <p class="booking-desc">Standard consultation during regular hours</p>
+                            </div>
+                        </label>
+                        <label class="booking-type-card emergency">
+                            <input type="radio" name="bookingType" value="emergency">
+                            <div class="booking-type-content">
+                                <h5>Emergency Appointment</h5>
+                                <p class="booking-time">Book Now - Immediate</p>
+                                <p class="booking-price" id="emergencyPrice">₹1500</p>
+                                <p class="booking-desc">Priority consultation at your preferred time</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Patient Details Form -->
+                <div class="booking-form-section">
+                    <h4>Patient Details</h4>
+                    <form id="doctorBookingForm">
+                        <div class="form-group">
+                            <label for="patientName">Full Name *</label>
+                            <input type="text" id="patientName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="patientEmail">Email *</label>
+                            <input type="email" id="patientEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="patientPhone">Phone Number *</label>
+                            <input type="tel" id="patientPhone" pattern="[0-9]{10}" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="patientAge">Age *</label>
+                                <input type="number" id="patientAge" min="1" max="120" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="patientGender">Gender *</label>
+                                <select id="patientGender" required>
+                                    <option value="">Select</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="problemDetails">Problem Description *</label>
+                            <textarea id="problemDetails" rows="4" placeholder="Describe your symptoms or health concerns..." required></textarea>
+                        </div>
+
+                        <!-- Date/Time for Regular Appointment -->
+                        <div id="regularDateSection" class="date-section">
+                            <div class="form-group">
+                                <label for="appointmentDate">Preferred Date *</label>
+                                <input type="date" id="appointmentDate" required>
+                            </div>
+                        </div>
+
+                        <!-- Emergency Time -->
+                        <div id="emergencyTimeSection" class="date-section hidden">
+                            <div class="form-group">
+                                <label for="emergencyDate">Preferred Date *</label>
+                                <input type="date" id="emergencyDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="emergencyTime">Preferred Time *</label>
+                                <select id="emergencyTime" required>
+                                    <option value="">Select Time</option>
+                                    <option value="09:00">09:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">01:00 PM</option>
+                                    <option value="14:00">02:00 PM</option>
+                                    <option value="15:00">03:00 PM</option>
+                                    <option value="16:00">04:00 PM</option>
+                                    <option value="17:00">05:00 PM</option>
+                                    <option value="18:00">06:00 PM</option>
+                                    <option value="19:00">07:00 PM</option>
+                                    <option value="20:00">08:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Total Amount -->
+                        <div class="booking-total">
+                            <span>Consultation Fee:</span>
+                            <span id="totalConsultationFee">₹500</span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Confirm Booking</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Confirmation Modal -->
+    <div class="modal hidden" id="bookingConfirmationModal">
+        <div class="modal-content modal-small">
+            <div class="confirmation-content">
+                <div class="confirmation-icon">✅</div>
+                <h3>Appointment Booked Successfully!</h3>
+                <div class="booking-confirmation-details">
+                    <p><strong>Doctor:</strong> <span id="confirmedDoctor"></span></p>
+                    <p><strong>Date:</strong> <span id="confirmedDate"></span></p>
+                    <p><strong>Time:</strong> <span id="confirmedTime"></span></p>
+                    <p><strong>Type:</strong> <span id="confirmedType"></span></p>
+                    <p class="confirmation-fee"><strong>Fee:</strong> <span id="confirmedFee"></span></p>
+                </div>
+                <p class="confirmation-msg">You will receive a confirmation email and SMS shortly</p>
+                <p class="appointment-id">Appointment ID: <strong id="appointmentId"></strong></p>
+                <button class="btn btn-primary" id="backToDoctors">Back to Doctors</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Medigo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="doctors.js"></script>
+</body>
+</html>

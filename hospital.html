@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hospital Portal - Medigo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo"><h1>🏥 Medigo</h1></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="medicines.html">Medicines</a></li>
+        <li><a href="doctors.html">Doctors</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+    </div>
+    <div class="scroll-progress" id="scrollProgress"></div>
+  </nav>
+
+  <section class="doctors-page">
+    <div class="container">
+      <div class="dashboard-header">
+        <div>
+          <h2>Hospital Dashboard</h2>
+          <p class="section-subtitle">Welcome, <span id="hospitalName">City Care Hospital</span></p>
+        </div>
+        <div class="actions">
+          <button id="changeHospitalName" class="btn btn-secondary">Change Name</button>
+          <button id="exportDoctorsData" class="btn btn-primary">Export JSON</button>
+          <input type="file" id="importDoctorsData" accept="application/json" class="hidden" />
+          <button id="importDoctorsDataBtn" class="btn">Import JSON</button>
+        </div>
+      </div>
+
+      <div class="crud-grid">
+        <div class="crud-card">
+          <h3>Add / Edit Doctor</h3>
+          <form id="doctorForm" class="crud-form">
+            <input type="hidden" id="docId" />
+            <div class="form-group">
+              <label for="docName">Full Name *</label>
+              <input id="docName" required />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="docSpeciality">Speciality *</label>
+                <input id="docSpeciality" required />
+              </div>
+              <div class="form-group">
+                <label for="docExperience">Experience (years) *</label>
+                <input id="docExperience" type="number" min="0" step="1" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="docRegularFee">Regular Fee (₹) *</label>
+                <input id="docRegularFee" type="number" min="0" step="1" required />
+              </div>
+              <div class="form-group">
+                <label for="docEmergencyFee">Emergency Fee (₹) *</label>
+                <input id="docEmergencyFee" type="number" min="0" step="1" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="docRating">Rating (0-5)</label>
+                <input id="docRating" type="number" min="0" max="5" step="0.1" />
+              </div>
+              <div class="form-group">
+                <label for="docPatients">Patients Treated</label>
+                <input id="docPatients" type="number" min="0" step="1" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="docImage">Photo</label>
+              <input id="docImage" type="file" accept="image/*" />
+              <div class="preview" id="docPreview"></div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="button" id="resetDocForm" class="btn">Reset</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="crud-card">
+          <h3>Doctors</h3>
+          <div class="table-wrap">
+            <table class="table" id="docTable">
+              <thead>
+                <tr>
+                  <th>Photo</th>
+                  <th>Name</th>
+                  <th>Speciality</th>
+                  <th>Experience</th>
+                  <th>Fees</th>
+                  <th>Rating</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="crud-card">
+          <h3>Incoming Appointments</h3>
+          <div class="table-wrap">
+            <table class="table" id="apptTable">
+              <thead>
+                <tr>
+                  <th>Appt ID</th>
+                  <th>Patient</th>
+                  <th>Doctor</th>
+                  <th>Date/Time</th>
+                  <th>Type</th>
+                  <th>Fee</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="hospital.js"></script>
+</body>
+</html>

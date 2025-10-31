@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medigo - Your Healthcare Partner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>🏥 Medigo</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="medicines.html">Medicines</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Healthcare at Your Doorstep</h2>
+                <p>Book doctor consultations online and order medicines from nearby pharmacies</p>
+                <div class="hero-buttons">
+                    <a href="medicines.html" class="btn btn-primary">Order Medicines</a>
+                    <a href="doctors.html" class="btn btn-secondary">Consult Doctor</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About Medigo</h2>
+            <div class="about-content">
+                <p>Medigo is your trusted healthcare partner, providing convenient access to medicines and doctor consultations from the comfort of your home.</p>
+                <div class="features">
+                    <div class="feature-card">
+                        <h4>⚡ Fastest Delivery in Market</h4>
+                        <p>Get your medicines delivered within 30-45 minutes from pharmacies within 5km radius</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🏥 Direct Hospital Connection</h4>
+                        <p>Seamless services with direct connection to hospitals for instant consultations and care</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🌐 Pan India Hospital Network</h4>
+                        <p>Connected with top hospitals and healthcare centers across India for comprehensive care</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>👨‍⚕️ Expert & Experienced Doctors</h4>
+                        <p>Consult with highly qualified specialist doctors with years of experience and thousands of satisfied patients</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💊 Wide Medicine Range</h4>
+                        <p>Access to all types of medicines from trusted pharmacies with guaranteed quality and authenticity</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔒 Safe & Secure</h4>
+                        <p>Your health data is protected with industry-standard security measures and complete privacy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Services -->
+    <section id="services" class="about-section">
+        <div class="container">
+            <h2>Other Services</h2>
+            <p class="section-subtitle">Service portals for partners</p>
+            <div class="features">
+                <div class="feature-card">
+                    <h4>Pharmacist Portal</h4>
+                    <p>Manage pharmacy inventory (CRUD) and export/import data.</p>
+                    <a href="pharmacist.html" class="btn btn-primary" style="margin-top:0.75rem;">Go to Pharmacist Portal</a>
+                </div>
+                <div class="feature-card">
+                    <h4>Hospital Portal</h4>
+                    <p>Manage doctors and their details with an easy dashboard.</p>
+                    <a href="hospital.html" class="btn btn-secondary" style="margin-top:0.75rem;">Go to Hospital Portal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Medigo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="home.js"></script>
+</body>
+</html>

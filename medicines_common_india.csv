@@ -1,0 +1,26 @@
+Medicine,Generic,Form/Strength,Pack,Approx_Price_INR,Category,Source
+Paracetamol,Paracetamol,500 mg tablet,Strip of 10,₹30 - ₹80,Analgesic/Antipyretic,1mg/Apollo/PharmEasy
+Ibuprofen,Ibuprofen,400 mg tablet,Strip of 10,₹60 - ₹150,NSAID,1mg/PharmEasy
+Aspirin,Aspirin,75 mg tablet,Strip of 10,₹40 - ₹120,Antiplatelet/Analgesic,1mg/PharmEasy
+Diclofenac,Diclofenac Sodium,50 mg tablet,Strip of 10,₹40 - ₹120,NSAID,1mg/PharmEasy
+Cetirizine,Cetirizine,10 mg tablet,Strip of 10,₹20 - ₹60,Antihistamine,1mg/Netmeds
+Loratadine,Loratadine,10 mg tablet,Strip of 10,₹30 - ₹90,Antihistamine,1mg/Netmeds
+Levocetirizine,Levocetirizine,5 mg tablet,Strip of 10,₹25 - ₹80,Antihistamine,1mg/PharmEasy
+Amoxicillin,Amoxicillin,500 mg capsule,Strip of 10,₹50 - ₹150,Antibiotic (Penicillin),1mg/Netmeds
+Amoxicillin + Clavulanate,Amoxicillin+Clavulanate,625 mg tablet,Strip of 10,₹120 - ₹300,Broad-spectrum antibiotic,1mg/PharmEasy
+Azithromycin,Azithromycin,500 mg tablet,Strip of 3,₹30 - ₹120,Macrolide antibiotic,1mg/Netmeds
+Ciprofloxacin,Ciprofloxacin,500 mg tablet,Strip of 10,₹60 - ₹160,Fluoroquinolone antibiotic,1mg/PharmEasy
+Metformin,Metformin,500 mg tablet,Strip of 10,₹40 - ₹120,Antidiabetic (Biguanide),1mg/Netmeds
+Glimepiride,Glimepiride,1 mg tablet,Strip of 10,₹30 - ₹100,Antidiabetic (Sulfonylurea),1mg/PharmEasy
+Amlodipine,Amlodipine,5 mg tablet,Strip of 10,₹30 - ₹90,Antihypertensive (CCB),1mg/Netmeds
+Telmisartan,Telmisartan,40 mg tablet,Strip of 10,₹80 - ₹220,Antihypertensive (ARB),1mg/PharmEasy
+Losartan,Losartan,50 mg tablet,Strip of 10,₹60 - ₹180,Antihypertensive (ARB),1mg/Netmeds
+Atorvastatin,Atorvastatin,10 mg tablet,Strip of 10,₹60 - ₹200,Statin (lipid-lowering),1mg/PharmEasy
+Omeprazole,Omeprazole,20 mg capsule,Strip of 10,₹40 - ₹120,Proton pump inhibitor,1mg/Netmeds
+Pantoprazole,Pantoprazole,40 mg tablet,Strip of 10,₹50 - ₹150,Proton pump inhibitor,1mg/PharmEasy
+Salbutamol Inhaler,Salbutamol (albuterol),Metered-dose inhaler 100 mcg,1 inhaler (200 doses),₹150 - ₹400,Bronchodilator,1mg/Netmeds
+Ondansetron,Ondansetron,4 mg tablet,Strip of 10,₹30 - ₹120,Antiemetic,1mg/PharmEasy
+Ranitidine (or Famotidine),Famotidine,20 mg tablet,Strip of 10,₹30 - ₹100,H2 blocker/Antacid,1mg/Netmeds
+Multivitamin (General),Multivitamin,Tablet,Strip of 10,₹60 - ₹250,Supplement,PharmEasy/Netmeds
+Cefixime,Cefixime,200 mg tablet,Strip of 10,₹120 - ₹300,Antibiotic (Cephalosporin),1mg/Netmeds
+Fluconazole,Fluconazole,150 mg tablet,Single tablet,₹30 - ₹120,Antifungal,1mg/PharmEasy
